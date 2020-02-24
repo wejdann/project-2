@@ -11,7 +11,7 @@ export default class Menue extends Component {
         return (
             <div>
                  <Router>
-          <Link to="/"> Home </Link> ||{" "}
+          <Link to="/"> Articles </Link> ||{" "}
           <Link to="/MyArticles"> My Articles </Link> ||{" "}
           <Link to="/AddArticles"> Add Articles </Link> ||{" "}
           <Link to="/contact"> Contact Us </Link>{" "}

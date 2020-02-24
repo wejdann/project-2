@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-import Menue from './Components/Menue';
+import Menue from "./Components/Menue";
 import Articles from './Components/Articles';
-import AddArticles from "./Components/AddArticles";
-import MyArticles from "./Components/MyArticles";
-import Contact from "./Components/Contact";
 import axios from "axios";
 
 export default class App extends Component {
@@ -11,19 +8,20 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      articles: [],
+      articles: []
     };
   }
   componentDidMount() {
     axios({
       method: "get",
       url:
-        "http://newsapi.org/v2/everything?q=bitcoin&from=2020-01-23&sortBy=publishedAt&apiKey=136430c128bc40ffb3148df6ed72b2a9"
+        "http://newsapi.org/v2/everything?q=bitcoin&from=2020-02-10&sortBy=publishedAt&apiKey=136430c128bc40ffb3148df6ed72b2a9"
     })
       .then(res => {
+        console.log(res);
         this.setState({
-          articles: res.data.articles
-        });
+articles : res.data.articles
+        })
       })
       .catch(err => {
         console.log("err", err);
@@ -31,14 +29,18 @@ export default class App extends Component {
   }
 
   render() {
-    console.log(this.state);
+    // const allArticles = this.state.articles.map((element, index) => (
+    //   <div key={index}>
+    //     <h2>{element.title}</h2>
+    //     <img src={element.urlToImage} />
+    //     <p>{element.description}</p>
+    //     <h3>{element.author}</h3>
+    //   </div>
+    // ));
     return (
       <div>
-         
-        <h1> app work </h1>
-        <Menue/>
-      
-
+        <Menue />
+        <Articles allArticles={this.state.articles}/>
       </div>
     );
   }
