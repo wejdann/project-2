@@ -9,13 +9,12 @@ export default class Articles extends Component {
         <Item
           key={index}
           element={element}
-          readLaterFunc={this.props.readLaterFunc}
+          AddArticleFunc={this.props.AddArticleFunc}
         />
       ));
     }
     return (
       <div>
-        {/* {console.log(this.props.allArt, "all Art")} */}
         <h1>{allArticles}</h1>
       </div>
     );

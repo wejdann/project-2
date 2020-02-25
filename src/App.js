@@ -8,8 +8,10 @@ export default class App extends Component {
 
     this.state = {
       articles: [],
-      readLaterArt: []
+      Add_articles: [],
+      checkComplet :[]
     };
+    
   }
   componentWillMount() {
     axios({
@@ -27,30 +29,47 @@ export default class App extends Component {
         console.log("err", err);
       });
   }
-  readLater = i => {
-    console.log("uuu", i);
+  AddArticle = element => {
+    // console.log("uuu", i);
     this.setState({
-      readLaterArt: [i]
+      Add_articles: [ element,...this.state.Add_articles]
     });
-    // this.setState(element=>{
-    //   element =[i, ...this.state.element]
-    //   console.log("uuu", i);
-
-    // })
-    // this.element =[i, ...state.element]
-    // this.setState({
-    //   element: this.state.i
-    //   this.element :[i, ...state.element]
-
-    // });
   };
+
+  HandelToDelete = (elem) => {
+    const Add_articles = [...this.state.Add_articles];
+    Add_articles.splice(elem,1);
+    this.setState({
+      Add_articles
+    })
+  };
+
+  HandelToClearAll = ()=> {
+    let Add_articles = [...this.state.Add_articles];
+    console.log("all")
+    Add_articles=[]
+    this.setState({
+      Add_articles
+    });}
+
+HandelAsComplete =()=>{
+console.log("ascomplete")
+this.setState({
+  checkComplet: [...this.state.checkComplet]
+});
+    }
+  
   render() {
     return (
       <div>
         <Menue
           allArticles={this.state.articles}
-          readLaterFunc={this.readLater}
-          readLater_2={this.state.readLaterArt}
+          AddArticleFunc={this.AddArticle}
+          AddArticle_2={this.state.Add_articles}
+          DeleteArticles={this.HandelToDelete}
+          ClearAllArticles={this.HandelToClearAll}
+          MarkeAsComplete={this.HandelAsComplete}
+          
         />
       </div>
     );

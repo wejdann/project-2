@@ -8,8 +8,8 @@ export default class Item extends Component {
         <img src={this.props.element.urlToImage} />
         <p>{this.props.element.description}</p>
         <h6>{this.props.element.author}</h6>
-        <button onClick={() => this.props.readLaterFunc(this.props.element)}>
-          Read Later
+        <button onClick={() => this.props.AddArticleFunc(this.props.element)}>
+         Add Article
         </button>
       </div>
     );

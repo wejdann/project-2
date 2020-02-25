@@ -13,7 +13,7 @@ export default class Menue extends Component {
           <Link to="/"> Articles </Link> ||{" "}
           <Link to="/MyArticles"> My Articles </Link> ||{" "}
           <Link to="/AddArticles"> Add Articles </Link> ||{" "}
-          <Link to="/contact"> Contact Us </Link>{" "}
+          <Link to="/contact"> Contact Us </Link>
           <div>
             <Route
               exact
@@ -21,18 +21,23 @@ export default class Menue extends Component {
               component={() => (
                 <Articles
                   allArticles={this.props.allArticles}
-                  readLaterFunc={this.props.readLaterFunc}
+                  AddArticleFunc={this.props.AddArticleFunc}
                 />
               )}
-            />{" "}
+            />
             <Route
               path="/MyArticles"
               component={() => (
-                <MyArticles readLater_2={this.props.readLater_2} />
+                <MyArticles 
+                AddArticle_2={this.props.AddArticle_2} 
+                DeleteArticles={this.props.DeleteArticles}     
+                ClearAllArticles={this.props.ClearAllArticles}
+                MarkeAsComplete={this.props.MarkeAsComplete}
+                />
               )}
-            />{" "}
-            <Route path="/AddArticles" component={AddArticles} />{" "}
-            <Route path="/contact" component={Contact} />{" "}
+            />
+            <Route path="/AddArticles" component={AddArticles} />
+            <Route path="/contact" component={Contact} />
           </div>
         </Router>
       </div>
