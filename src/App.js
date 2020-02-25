@@ -46,7 +46,6 @@ export default class App extends Component {
 
   HandelToClearAll = ()=> {
     let Add_articles = [...this.state.Add_articles];
-    console.log("all")
     Add_articles=[]
     this.setState({
       Add_articles

@@ -8,9 +8,9 @@
 
 
 #### Useer Stories :
-1. As a website visitor , I want to be able to add article for share it with others .
-2. As a website visitor , I want to be able to chose (read later) for the article to remeber it .
-3. As a website visitor , I want to be able to chose (read more) for the article to more informition  .
+1. As a website visitor , I want to be able to add article to my c list .
+2. As a website visitor , I want to be able to delete only one article from my list .
+3. As a website visitor , I want to be able to clear all the articles from my list .
 4. As a website visitor , I want to be able to clear all the articles to be empty page .
 5. As a website visitor , I want to be able to clear the select article to delete it only .
 6. As a website visitor , I want to be able to add article in my list to read it any time.
