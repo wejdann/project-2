@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Menue from "./Components/Menue";
-import Articles from './Components/Articles';
 import axios from "axios";
 
 export default class App extends Component {
@@ -8,10 +7,11 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      articles: []
+      articles: [],
+      readLaterArt: []
     };
   }
-  componentDidMount() {
+  componentWillMount() {
     axios({
       method: "get",
       url:
@@ -20,27 +20,38 @@ export default class App extends Component {
       .then(res => {
         console.log(res);
         this.setState({
-articles : res.data.articles
-        })
+          articles: res.data.articles
+        });
       })
       .catch(err => {
         console.log("err", err);
       });
   }
+  readLater = i => {
+    console.log("uuu", i);
+    this.setState({
+      readLaterArt: [i]
+    });
+    // this.setState(element=>{
+    //   element =[i, ...this.state.element]
+    //   console.log("uuu", i);
 
+    // })
+    // this.element =[i, ...state.element]
+    // this.setState({
+    //   element: this.state.i
+    //   this.element :[i, ...state.element]
+
+    // });
+  };
   render() {
-    // const allArticles = this.state.articles.map((element, index) => (
-    //   <div key={index}>
-    //     <h2>{element.title}</h2>
-    //     <img src={element.urlToImage} />
-    //     <p>{element.description}</p>
-    //     <h3>{element.author}</h3>
-    //   </div>
-    // ));
     return (
       <div>
-        <Menue />
-        <Articles allArticles={this.state.articles}/>
+        <Menue
+          allArticles={this.state.articles}
+          readLaterFunc={this.readLater}
+          readLater_2={this.state.readLaterArt}
+        />
       </div>
     );
   }

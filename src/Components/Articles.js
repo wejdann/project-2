@@ -1,21 +1,21 @@
 import React, { Component } from "react";
+import Item from "./Item";
 
 export default class Articles extends Component {
   render() {
     let allArticles = null;
-
     if (this.props.allArticles !== undefined) {
       allArticles = this.props.allArticles.map((element, index) => (
-        <div key={index}>
-          <h2>{element.title}</h2>
-          <img src={element.urlToImage} />
-          <p>{element.description}</p>
-          <h3>{element.author}</h3>
-        </div>
+        <Item
+          key={index}
+          element={element}
+          readLaterFunc={this.props.readLaterFunc}
+        />
       ));
     }
     return (
       <div>
+        {/* {console.log(this.props.allArt, "all Art")} */}
         <h1>{allArticles}</h1>
       </div>
     );
