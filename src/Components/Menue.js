@@ -27,12 +27,13 @@ export default class Menue extends Component {
             />
             <Route
               path="/MyArticles"
-              component={() => (
+              render={() => (
                 <MyArticles
                   ReadArticle_2={this.props.ReadArticle_2}
                   DeleteArticles={this.props.DeleteArticles}
+                  EditArticles={this.props.EditArticles}
                   ClearAllArticles={this.props.ClearAllArticles}
-                  MarkeAsComplete={this.props.MarkeAsComplete}
+                  // MarkeAsComplete={this.props.MarkeAsComplete}
                 />
               )}
             />
