@@ -21,22 +21,27 @@ export default class Menue extends Component {
               component={() => (
                 <Articles
                   allArticles={this.props.allArticles}
-                  AddArticleFunc={this.props.AddArticleFunc}
+                  ReadArticleFunc={this.props.ReadArticleFunc}
                 />
               )}
             />
             <Route
               path="/MyArticles"
               component={() => (
-                <MyArticles 
-                AddArticle_2={this.props.AddArticle_2} 
-                DeleteArticles={this.props.DeleteArticles}     
-                ClearAllArticles={this.props.ClearAllArticles}
-                MarkeAsComplete={this.props.MarkeAsComplete}
+                <MyArticles
+                  ReadArticle_2={this.props.ReadArticle_2}
+                  DeleteArticles={this.props.DeleteArticles}
+                  ClearAllArticles={this.props.ClearAllArticles}
+                  MarkeAsComplete={this.props.MarkeAsComplete}
                 />
               )}
             />
-            <Route path="/AddArticles" component={AddArticles} />
+            <Route
+              path="/AddArticles"
+              component={() => (
+                <AddArticles addNewArticle={this.props.addNewArticle} />
+              )}
+            />
             <Route path="/contact" component={Contact} />
           </div>
         </Router>

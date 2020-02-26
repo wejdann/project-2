@@ -8,10 +8,9 @@ export default class App extends Component {
 
     this.state = {
       articles: [],
-      Add_articles: [],
-      checkComplet :[]
+      Use_articles: []
+      // checkComplet :[]
     };
-    
   }
   componentWillMount() {
     axios({
@@ -29,46 +28,54 @@ export default class App extends Component {
         console.log("err", err);
       });
   }
-  AddArticle = element => {
+  ReadLater = element => {
     // console.log("uuu", i);
     this.setState({
-      Add_articles: [ element,...this.state.Add_articles]
+      Use_articles: [element, ...this.state.Use_articles]
     });
   };
 
-  HandelToDelete = (elem) => {
-    const Add_articles = [...this.state.Add_articles];
-    Add_articles.splice(elem,1);
+  HandelToDelete = elem => {
+    const Use_articles = [...this.state.Use_articles];
+    Use_articles.splice(elem, 1);
     this.setState({
-      Add_articles
-    })
+      Use_articles
+    });
   };
 
-  HandelToClearAll = ()=> {
-    let Add_articles = [...this.state.Add_articles];
-    Add_articles=[]
+  HandelToClearAll = () => {
+    let Use_articles = [...this.state.Use_articles];
+    Use_articles = [];
     this.setState({
-      Add_articles
-    });}
+      Use_articles
+      // message : "No articles in your list ,Add more"
+    });
+  };
 
-HandelAsComplete =()=>{
-console.log("ascomplete")
-this.setState({
-  checkComplet: [...this.state.checkComplet]
-});
-    }
-  
+  addNewArticle = NewArticle => {
+    this.setState({
+      articles: [...this.state.articles, NewArticle]
+    });
+  };
+
+  // HandelAsComplete =()=>{
+  // console.log("ascomplete")
+  // this.setState({
+  //   checkComplet: [...this.state.checkComplet]
+  // });
+  //     }
+
   render() {
     return (
       <div>
         <Menue
           allArticles={this.state.articles}
-          AddArticleFunc={this.AddArticle}
-          AddArticle_2={this.state.Add_articles}
+          ReadArticleFunc={this.ReadLater}
+          ReadArticle_2={this.state.Use_articles}
           DeleteArticles={this.HandelToDelete}
           ClearAllArticles={this.HandelToClearAll}
           MarkeAsComplete={this.HandelAsComplete}
-          
+          addNewArticle={this.addNewArticle}
         />
       </div>
     );

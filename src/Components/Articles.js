@@ -9,7 +9,7 @@ export default class Articles extends Component {
         <Item
           key={index}
           element={element}
-          AddArticleFunc={this.props.AddArticleFunc}
+          ReadArticleFunc={this.props.ReadArticleFunc}
         />
       ));
     }

@@ -11,7 +11,7 @@ export default class MyArticles extends Component {
             <h1> <button onClick={() => this.props.ClearAllArticles()}>
                  Clear All
                </button></h1>
-        {this.props.AddArticle_2.map(elem => {
+        {this.props.ReadArticle_2.map(elem => {
           return (
             <div>
               <h4>{elem.title}</h4>
@@ -21,9 +21,9 @@ export default class MyArticles extends Component {
               <button onClick={() => this.props.DeleteArticles()}>
                 Delete
               </button>
-              <button  onClick={() => this.props.MarkeAsComplete()}>
+              {/* <button  onClick={() => this.props.MarkeAsComplete()}>
                Complete
-              </button>
+              </button> */}
               <button>Edit</button>
              
             </div>
