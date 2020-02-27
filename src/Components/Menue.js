@@ -1,19 +1,29 @@
 import React, { Component } from "react";
 import Articles from "./Articles";
-import MyArticles from "./MyArticles";
+import ReadingList from "./ReadingList";
 import AddArticles from "./AddArticles";
-import Contact from "./Contact";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
+import AboutUs from "./AboutUs";
+import {BrowserRouter as Router,Route,Link,} from "react-router-dom";
+//menue is link all Component with Component exapt the Item Component
 export default class Menue extends Component {
   render() {
     return (
+      //here props all the function by the menue page to send it
       <div>
         <Router>
-          <Link to="/"> Articles </Link> ||{" "}
-          <Link to="/MyArticles"> My Articles </Link> ||{" "}
-          <Link to="/AddArticles"> Add Articles </Link> ||{" "}
-          <Link to="/contact"> Contact Us </Link>
+        <div class="container">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark style=background-color: #e3f2fd;">
+    <div class="navbar navbar-inverese">
+      <a class="navbar-brand" href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Bitcoin.png/220px-Bitcoin.png"/></a>   </div>
+            <Link  class="navbar-brand" to="/"> Articles </Link>
+            <Link  class="navbar-brand" to="/ReadingList"> Reading List </Link>
+            <Link  class="navbar-brand" to="/AddArticles"> Add Articles </Link>
+            <Link  class="navbar-brand" to="/AboutUs"> About Us </Link>
+         
+            </nav>
+     
+</div>
+
           <div>
             <Route
               exact
@@ -25,15 +35,15 @@ export default class Menue extends Component {
                 />
               )}
             />
+
             <Route
-              path="/MyArticles"
+              path="/ReadingList"
               render={() => (
-                <MyArticles
+                <ReadingList
                   ReadArticle_2={this.props.ReadArticle_2}
                   DeleteArticles={this.props.DeleteArticles}
                   EditArticles={this.props.EditArticles}
                   ClearAllArticles={this.props.ClearAllArticles}
-                  // MarkeAsComplete={this.props.MarkeAsComplete}
                 />
               )}
             />
@@ -43,7 +53,7 @@ export default class Menue extends Component {
                 <AddArticles addNewArticle={this.props.addNewArticle} />
               )}
             />
-            <Route path="/contact" component={Contact} />
+            <Route path="/AboutUs" component={AboutUs} />
           </div>
         </Router>
       </div>

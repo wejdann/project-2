@@ -1,19 +1,21 @@
+// import the react
 import React, { Component } from "react";
+//import the Menue 
 import Menue from "./Components/Menue";
+//import the axios to fetch the data from API  
 import axios from "axios";
-
+// create a Component App
 export default class App extends Component {
   constructor(props) {
     super(props);
-
+    // add three states to use it 
     this.state = {
       articles: [],
       Use_articles: [],
       newTitle: "",
-      CheckMe: true
-      // checkComplet :[]
     };
   }
+  //fetch the from API using axios
   componentWillMount() {
     axios({
       method: "get",
@@ -21,7 +23,6 @@ export default class App extends Component {
         "https://cors-anywhere.herokuapp.com/http://newsapi.org/v2/everything?q=bitcoin&from=2020-02-10&sortBy=publishedAt&apiKey=136430c128bc40ffb3148df6ed72b2a9"
     })
       .then(res => {
-        // console.log(res);
         this.setState({
           articles: res.data.articles
         });
@@ -30,13 +31,13 @@ export default class App extends Component {
         // console.log("err", err);
       });
   }
+  // this function for button read later 
   ReadLater = element => {
-    // console.log("uuu", i);
     this.setState({
       Use_articles: [element, ...this.state.Use_articles]
     });
   };
-
+ // this function for button Delete article one element in (readinglist) page
   HandelToDelete = elem => {
     const Use_articles = [...this.state.Use_articles];
     Use_articles.splice(elem, 1);
@@ -44,50 +45,39 @@ export default class App extends Component {
       Use_articles
     });
   };
+ // this function to button Edit the title of article in (readinglist) page
   HandelToEdit = (e, id) => {
-    console.log("edit me");
-    // const title = this.props.elem
-    // // const newTitle = this.props.title
-    // console.log("to edit", this.state.Use_articles[id]);
-    // const updatedArticle = Object.assign({}, this.state.Use_articles[id])
-    // this.setState({
-    //   Use_articles:
-    // })
-    //     this.setState({
-    // // Use_articles: [element, ...this.state.Use_articles],
-    //       newTitle: e.target.value
+    const articleClone = Object.assign({}, this.state.Use_articles[id]);
 
-    //     });
+    articleClone.title = e.target.value;
+
+    const artclesCopy = [...this.state.Use_articles];
+
+    artclesCopy.splice(id, 1, articleClone);
+
+    this.setState({
+      Use_articles: artclesCopy
+    });
   };
-
+   // this function for button Clear All articles in (readinglist) page
   HandelToClearAll = () => {
     alert("Are you sure to delete all");
     let Use_articles = [...this.state.Use_articles];
     Use_articles = [];
     this.setState({
       Use_articles
-
-      // message : "No articles in your list ,Add more"
     });
   };
-  handleCheck = event => {
-    this.setState({ CheckMe: event.target.checked });
-  };
+   // this function for button add new article in (AddArticles) page
   addNewArticle = NewArticle => {
     this.setState({
       articles: [...this.state.articles, NewArticle]
     });
   };
 
-  // HandelAsComplete =()=>{
-  // console.log("ascomplete")
-  // this.setState({
-  //   checkComplet: [...this.state.checkComplet]
-  // });
-  //     }
-
   render() {
     return (
+      //here send all the functions by call the Component (Menue)
       <div>
         <Menue
           allArticles={this.state.articles}
@@ -96,7 +86,6 @@ export default class App extends Component {
           DeleteArticles={this.HandelToDelete}
           EditArticles={this.HandelToEdit}
           ClearAllArticles={this.HandelToClearAll}
-          // MarkeAsComplete={this.HandelAsComplete}
           addNewArticle={this.addNewArticle}
         />
       </div>

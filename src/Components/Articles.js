@@ -3,6 +3,7 @@ import Item from "./Item";
 
 export default class Articles extends Component {
   render() {
+    //here is a map which acsees to all elemen in allArticles
     let allArticles = null;
     if (this.props.allArticles !== undefined) {
       allArticles = this.props.allArticles.map((element, index) => (
@@ -14,7 +15,9 @@ export default class Articles extends Component {
       ));
     }
     return (
+      //display
       <div>
+      
         <h1>{allArticles}</h1>
       </div>
     );
