@@ -10,7 +10,7 @@ export default class ReadingList extends Component {
       //here a map to accses to element  
       ////here in ReadingList user can see the article that marked as  (read later)
 /// user can clear all Articles and delete one article
-      <div>
+      <div class="container">
         <h1>
           <button class="btn btn-secondary" onClick={() => this.props.ClearAllArticles()}>
             Clear All
@@ -18,7 +18,7 @@ export default class ReadingList extends Component {
         </h1>
         {this.props.ReadArticle_2.map((elem, index) => {
           return (
-            <div class=" card-group">
+            <div class="container">
               <div class="card bg-light shadow">
               <h5 class="card-title" >{elem.title}</h5>
                 <img

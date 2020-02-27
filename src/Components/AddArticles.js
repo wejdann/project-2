@@ -47,7 +47,7 @@ export default class AddArticles extends Component {
       //here a label which have a fixed name
       //here input and textarea ,allow to user to write inside it
       // here a button to add a new article
-      <form>
+      <form class="container">
       <div class="form-group">
         <br/>
         <label for="formGroupExampleInput">Article Title :</label>
