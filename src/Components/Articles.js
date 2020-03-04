@@ -16,7 +16,7 @@ export default class Articles extends Component {
     }
     return (
       //display
-      <div>
+      <div >
       
         <h1>{allArticles}</h1>
       </div>

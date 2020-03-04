@@ -5,7 +5,7 @@ export default class Item extends Component {
     return (
       //props the data and send it to map in articles page
       <div class="container">
-       <div class=" card-columns-row">
+       <div class=" card-columns-row ">
               <div class="card bg-light shadow">
               <h5 class="card-title" >{this.props.element.title}</h5>
                 <img

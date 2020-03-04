@@ -3,7 +3,7 @@ import Articles from "./Articles";
 import ReadingList from "./ReadingList";
 import AddArticles from "./AddArticles";
 import AboutUs from "./AboutUs";
-import {BrowserRouter as Router,Route,Link,} from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 //menue is link all Component with Component exapt the Item Component
 export default class Menue extends Component {
   render() {
@@ -11,18 +11,31 @@ export default class Menue extends Component {
       //here props all the function by the menue page to send it
       <div>
         <Router>
-        <div class="container">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark style=background-color: #e3f2fd;">
-    <div class="navbar navbar-inverese">
-      <a class="navbar-brand" href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Bitcoin.png/220px-Bitcoin.png"/></a>   </div>
-            <Link  class="navbar-brand" to="/"> Articles </Link>
-            <Link  class="navbar-brand" to="/ReadingList"> Reading List </Link>
-            <Link  class="navbar-brand" to="/AddArticles"> Add Articles </Link>
-            <Link  class="navbar-brand" to="/AboutUs"> About Us </Link>
-         
+          <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark style=background-color: #e3f2fd;">
+              <div class="navbar navbar-inverese">
+                <a class="navbar-brand" href="#">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Bitcoin.png/220px-Bitcoin.png" />
+                </a>{" "}
+              </div>
+              <Link class="navbar-brand" to="/">
+                {" "}
+                Articles{" "}
+              </Link>
+              <Link class="navbar-brand" to="/ReadingList">
+                {" "}
+                Reading List{" "}
+              </Link>
+              <Link class="navbar-brand" to="/AddArticles">
+                {" "}
+                Add Articles{" "}
+              </Link>
+              <Link class="navbar-brand" to="/AboutUs">
+                {" "}
+                About Us{" "}
+              </Link>
             </nav>
-     
-</div>
+          </div>
 
           <div>
             <Route
@@ -35,7 +48,16 @@ export default class Menue extends Component {
                 />
               )}
             />
-
+            <Route
+              exact
+              path="/project-2"
+              component={() => (
+                <Articles
+                  allArticles={this.props.allArticles}
+                  ReadArticleFunc={this.props.ReadArticleFunc}
+                />
+              )}
+            />
             <Route
               path="/ReadingList"
               render={() => (
